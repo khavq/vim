@@ -53,7 +53,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'mileszs/ack.vim'
 
 "Install them dracula
-Plugin 'dracula/vim'
+Plugin 'dracula/vim', { 'name': 'dracula' }
 
 " Comment
 Plugin 'scrooloose/nerdcommenter'
@@ -81,6 +81,9 @@ Plugin 'kien/ctrlp.vim'
 "surround
 Plugin 'tpope/vim-surround'
 
+" Open itern in NREDTREE
+Plugin 'mortontox/nerdtree-item'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -106,5 +109,7 @@ autocmd BufEnter * NERDTreeMirror "thêm folder tree vào
 autocmd VimEnter * wincmd p       "thêm màu mè cho code
 let g:NERDTreeWinSize=40
 
+packadd! dracula
 color dracula
-
+colorscheme dracula
+let g:nerdtree_iterm_iterm_version = 3
