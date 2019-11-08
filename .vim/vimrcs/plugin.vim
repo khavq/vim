@@ -109,7 +109,7 @@ autocmd BufEnter * NERDTreeMirror "thêm folder tree vào
 autocmd VimEnter * wincmd p       "thêm màu mè cho code
 let g:NERDTreeWinSize=40
 
-packadd! dracula
-color dracula
+let g:dracula_italic = 0
 colorscheme dracula
+highlight Normal ctermbg=None
 let g:nerdtree_iterm_iterm_version = 3
