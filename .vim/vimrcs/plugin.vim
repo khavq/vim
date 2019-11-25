@@ -84,6 +84,9 @@ Plugin 'tpope/vim-surround'
 " Open itern in NREDTREE
 Plugin 'mortontox/nerdtree-item'
 
+" move selected line
+Plugin 'matze/vim-move'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required

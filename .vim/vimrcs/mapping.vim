@@ -7,7 +7,7 @@ nmap <leader>w :w!<cr>
 " Map Esc to jj
 :imap jj <Esc>
 
-" Hide highlight 
+" Hide highlight
 map <silent> <leader><cr> :noh<cr>
 
 " Move between windows
@@ -19,7 +19,7 @@ map <C-h> <C-W>h
 map <leader>h <C-W>h
 map <leader>l <C-W>l
 
-" NERDCommenter map 
+" NERDCommenter map
 map <leader>/ <plug>NERDCommenterToggle
 
 "navigate file
@@ -38,3 +38,5 @@ let g:ctrlp_custom_ignore = {
 	\ 'file': '\v\.(exe|so|dll)$',
 	\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 	\ }
+
+let g:move_key_modifier = 'C'
