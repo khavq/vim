@@ -82,10 +82,13 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 
 " Open itern in NREDTREE
-Plugin 'mortontox/nerdtree-item'
+Plugin 'mortontox/nerdtree-iterm'
 
 " move selected line
 Plugin 'matze/vim-move'
+
+" Go plugin
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
