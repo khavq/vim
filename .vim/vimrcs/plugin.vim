@@ -119,3 +119,4 @@ let g:dracula_italic = 0
 colorscheme dracula
 highlight Normal ctermbg=None
 let g:nerdtree_iterm_iterm_version = 3
+set rtp+=/usr/local/opt/fzf
