@@ -3,95 +3,120 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call plug#begin()
+call plug#begin('~/.vim/plugged')
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+"Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
+" Plug 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+Plug 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/khavq/.vim/plugin'
+" Plug 'file:///home/khavq/.vim/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+" Plug 'ascenator/L9', {'name': 'newL9'}
 
 " install NERDTree
-Plugin 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Install vim-multiple-cursor
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
 " Install vim rails
-Plugin 'tpope/vim-rails'
+Plug 'tpope/vim-rails'
 
 " git for NERDTree
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Tab for NERDTree
-Plugin 'jistr/vim-nerdtree-tabs'
+Plug 'jistr/vim-nerdtree-tabs'
 
 " Slim template
-Plugin 'slim-template/vim-slim.git'
+Plug 'slim-template/vim-slim'
 
 " Install Airline
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 
 " Install 'mileszs/ack.vim'
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 
 "Install them dracula
-Plugin 'dracula/vim', { 'name': 'dracula' }
+Plug 'dracula/vim', { 'name': 'dracula' }
 
 " Comment
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " JSX syntac hilight
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " autoread file
-Plugin 'djoshea/vim-autoread'
+Plug 'djoshea/vim-autoread'
 
 " indent line
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 
 "coffee script
-Plugin 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
 
 " vue template
-Plugin 'posva/vim-vue'
-Plugin 'digitaltoad/vim-pug'
+Plug 'posva/vim-vue'
+Plug 'digitaltoad/vim-pug'
 
 "ctrlp.vim
-Plugin 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+"Plug '/usr/local/opt/fzf'
+"Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 "surround
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Open itern in NREDTREE
-Plugin 'mortontox/nerdtree-iterm'
+Plug 'mortonfox/nerdtree-iterm'
 
 " move selected line
-Plugin 'matze/vim-move'
+Plug 'matze/vim-move'
 
 " Go plugin
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" Elixir
+Plug 'elixir-editors/vim-elixir'
+
+" Mix format
+Plug 'mhinz/vim-mix-format'
+
+" emment
+Plug 'mattn/emmet-vim'
+
+"json
+Plug 'elzr/vim-json'
+
+" delete buffer
+Plug 'Asheq/close-buffers.vim'
+
+" All of your Plugs must be added before the following line
+call plug#end()            " required
 filetype plugin indent on    " required
 
 " show existing tab with 4 spaces width
@@ -110,13 +135,22 @@ set expandtab
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
-autocmd VimEnter * NERDTree       "tự chạy NERDTree ngay
+"autocmd VimEnter * NERDTree       "tự chạy NERDTree ngay
 autocmd BufEnter * NERDTreeMirror "thêm folder tree vào
 autocmd VimEnter * wincmd p       "thêm màu mè cho code
-let g:NERDTreeWinSize=40
 
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"let g:nerdtree_tabs_open_on_console_startup=1
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+
+"autocmd BufEnter * NERDTreeMirror "thêm folder tree vào
+
+let g:NERDTreeWinSize=40
 let g:dracula_italic = 0
 colorscheme dracula
 highlight Normal ctermbg=None
 let g:nerdtree_iterm_iterm_version = 3
 set rtp+=/usr/local/opt/fzf
+let g:user_emmet_mode='a'

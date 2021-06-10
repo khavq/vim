@@ -7,8 +7,8 @@ set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
 set directory=/tmp
 
 
-" add new tab to the last 
+" add new tab to the last
 autocmd VimEnter * tab all
 autocmd BufAdd * exe 'tablast | tabe "' . expand( "<afile") .'"'
-
-
+"autocmd BufNew * exe 'Bdelete nameless'
+"autocmd BufEnter * exe 'Bdelete nameless'

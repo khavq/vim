@@ -4,6 +4,9 @@ let g:mapleader = " "
 
 " Fast saving
 nmap <leader>w :w!<cr>
+" Open fzf for searching files
+nmap <leader>p :Files<cr>
+nnoremap <silent> <Leader>f :Rg<CR>
 " Map Esc to jj
 :imap jj <Esc>
 
@@ -40,3 +43,7 @@ let g:ctrlp_custom_ignore = {
 	\ }
 
 let g:move_key_modifier = 'C'
+
+" copy current file path to clipboard
+nnoremap ,c :let @* = expand("%")<cr>
+nnoremap ,cc :let @* = expand("%:p")<cr>
